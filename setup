@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -o errexit -o pipefail -o nounset
+
+this_dir="$(dirname "${BASH_SOURCE[0]}")"
+echo "> Setting up ${this_dir}"
+
+repositories_file=".repositories"
+absolute_path="$(pwd)/${repositories_file}"
+
+if [ ! -d $repositories_file ];
+then
+  touch $repositories_file
+fi
+
+clone_repositories () {
+  echo "Cloning all repos"
+  while IFS="" read -r repository || [ -n "$repository" ]
+    do
+        # Extract repository name
+        directory=${repository##*/}
+        directory=${directory%.*}
+
+        # Does a copy of the repository exist?
+        if [[ -d ${directory} ]]
+        then
+            echo "> A copy of ${directory} already exists."
+            read -rp "> Do you wish to overwrite? [y/n] " overwrite </dev/tty
+            if [[ ${overwrite} = "y" ]]
+            then
+              # Remove existing verisons of the repository
+              rm -rf "${directory}"
+              # Clone a new copy of the repository
+              git clone "${repository}"
+            else
+              echo "> Skipping ${directory}"
+            fi
+        else
+          # Clone a new copy of the repository
+          git clone "${repository}"
+        fi
+        
+    done < "$absolute_path"
+}
+
+clone_repositories

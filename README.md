@@ -2,15 +2,21 @@
 
 Script for setting up applications with multiple repos
 
-## Install
+## How to use
 
-Simplets way possible
+1. Get the script file
 
 ```bash
 curl -o setup https://raw.githubusercontent.com/codewell/setup/master/setup
 ```
 
-Add all your repos to a file `.repositories` e.g.
+2. Make the file executable
+
+```bash
+chmod +x ./setup
+```
+
+3. Add all your repos to a file `.repositories` e.g.
 
 ```
 url-to-repository-1
@@ -18,10 +24,11 @@ url-to-repository-2
 url-to-repository-3
 ```
 
-Run
+4. Run the script
 
-```bashhttps://raw.githubusercontent.com/codewell/setup/master/setup
+```bash
 ./setup
 ```
 
-in the same directory
+5. Follow the instructions
+6. Thats it. Done!

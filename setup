@@ -29,6 +29,7 @@ clone_repositories () {
         echo "> A copy of ${directory} already exists"
         echo "> Do you wish to overwrite? [y/n] "
         read -r -n 1 overwrite </dev/tty
+        echo ""
         if [[ ${overwrite} = "y" ]]
         then
           # Remove existing verisons of the repository

@@ -14,7 +14,7 @@ Add all your repos to a file `.repositories`
 
 Run
 
-```bash
+```bashhttps://raw.githubusercontent.com/codewell/setup/master/setup
 ./setup
 ```
 

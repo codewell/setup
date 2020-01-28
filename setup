@@ -17,8 +17,8 @@ fi
 clone_repositories () {
   echo "> Cloning all repositories in \".repositories\":"
   
+  echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
   while IFS="" read -r repository || [ -n "${repository}" ]; do
-    echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
     # Extract repository name
     directory=${repository##*/}
     directory=${directory%.*}
